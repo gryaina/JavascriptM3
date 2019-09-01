@@ -1,0 +1,59 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>JavaScript - MA03 - Question 1</title>
+      <script src="script.js"></script>
+      <script type="text/javascript" src="author.json"></script>
+
+  </head>
+  <body>
+
+  <!--Contact Form-->
+  <form name="myForm" onsubmit="return validation();">
+    <fieldset>
+      <legend>Fill in your contact information below:</legend>
+
+      <label>First name</label><br>
+      <input type="text" name="name"><br>
+
+      <label>Last name</label><br>
+      <input type="text" name="lastname"><br>
+
+      <label>Phone number</label><br>
+      <input type="text" name="phonenumber"><br>
+
+      <label>Email</label> <br>
+      <input type="email" name="email"><br>
+
+      <input type="submit" name="submit"></button>
+    </fieldset>
+  </form>
+
+  <script>
+  function validation() {
+    var name = document.forms["myForm"]["name"].value;
+    var lastname = document.forms["myForm"]["lastname"].value;
+    var phonenumber = document.forms["myForm"]["phonenumber"].value;
+    var email = document.forms["myForm"]["email"].value;
+    if (name == "" || lastname == "") {
+      alert("First and last name must be filled out.");
+      return false;
+    }
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!email.match(emailRegex)){
+      alert("Please enter a valid email address.");
+      return false;
+    }
+    var numberRegex = /^[0-9]{8}$/;
+    if (!phonenumber.match(numberRegex)){
+      alert("Please enter a valid phone number (8 digits)");
+      return false;
+    }
+    console.log("Validation successfull!");
+  }
+  </script>
+  </body>
+  </html>
